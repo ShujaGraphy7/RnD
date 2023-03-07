@@ -1,0 +1,147 @@
+                
+                
+                DIFFERENT EIP standards IN BLOCKCHAIN
+    
+--. ERC - 20 - Fungible Tokens 
+    i.      can be exchange with other Fungible token or item. 
+    ii.     to Fungible tokens weight age can be the same.
+    iii.    e.g - 100$ == 10x10$s || 23000rs
+
+
+--. ERC - 4907 - Extended Version of ERC721
+    i.      Adds expires method to the NFT(we can set expiry time of the NFT)
+    ii.     We can rent out our NFT's
+
+
+--. ERC - 918 - Minable Token Standard: used in PoW Algorithm
+
+
+--. ERC - 621
+    it is an extension of erc20 token with some extra functionalities
+    i.  Increase Supply
+    ii. Decrease Supply
+
+
+--. ERC - 777 - Fungible Tokens
+    i.      improved version of ERC20
+    ii.     reduce the overall transaction overhead
+    iii.    blacklist certain addresses
+    iv.     ERC-777 is difficult to implement properly,
+            due to its susceptibility to different forms of attack.
+    v.      It is recommended to use ERC-20 instead. Because of its complexity 
+    vi.     Backwards compatibility with ERC20. so you can contract with
+            your already used ERC20 token..
+
+
+--. EIP - 2535 - Diamonds, Multi-Facet Proxy
+    i.      allow to write smart contracts more then 24kb ok size
+    ii.     we can write 2 smart contracts one is for logics and other is for storing data
+    iii.    gas efficient.
+    iv.     Can make Modular smart contracts.
+    v.      used to organize large and complex solidity contracts.  
+    vi.     future upgrades might possible.
+
+================================================================================================================================
+
+--. EIP-165 - Standard Interface Detection
+    i.      check if other smart contract supports the same token
+    ii.     without ERC-165 if we send unsupported token to the other smart contract the tokens stuck
+            in the smart contract and not useable any more.
+    iii.    ERC-165 only allow users to send tokens to other smart contract if other contract allow to 
+            accepts the token.
+//Example
+if user send erc1155 token to the recipient then it check if recipient can handel erc1155 token.
+
+#############################################
+
+--. ERC - 223 - Fungible token
+    i.      Improved Version of ERC20 to handel Bad Transactions.
+    ii.     Main Function - Token Fallback is use to handel such transactions
+
+//example / info
+https://github.com/Dexaran/ERC223-token-standard
+
+If you send 100 ETH to a contract that is not intended to work with Ether, 
+then it will reject a transaction and nothing bad will happen. 
+BUT
+If you will send 100 ERC20 tokens to a contract that is not intended to work with ERC20 tokens, 
+then it will not reject tokens because it cant recognize an incoming transaction. 
+As the result, your tokens will get stuck at the contracts balance.
+
+#####################################################
+
+--. ERC - 721 - Non Fungible Tokens
+    i.      use to identify something unique / non Interchangeable
+    ii.     also useful for collectable items
+    iii.    each token have its different value
+    iv.     e.g - New CarA != New CarB || old CarA
+            ...useCases...
+    i.      real estate
+    ii.     collectable
+        2a. ERC - 721A
+            i.      another version of ERC721
+            ii.     supports minting in batch
+            iii.    reduce costs if mint multiple NFTs (required only 2k extra gas(per NFT)
+                    for minting more then one NFT at same time. where as normal ERC721 costs ~115k gas per extra mint ..)
+How it more Gas efficient?
+it only store base NFT id with Account address and set remaining addresses to blank. (If minted in Bulk)
+so when user try to find the holder of the nft it perform loop to get address of account.
+it store Address only once so it take less gas fee to store NFTs in bulk.
+https://github.com/chiru-labs/ERC721A/blob/main/contracts/ERC721A.sol
+
+        2b. ERC - 721R   
+            i.      another version of ERC721
+            ii.     it allow NFT holders to give there NFTs they minted back and get refunds in certain period of time.
+//example
+trustless refunds
+game collectables -- user can get NFT(AVATAR) for gaming but in future if he stop playing that game he can sell it back to the
+game owners to get his funds back.
+
+######################################
+
+--. ERC - 809 - Renting NFTs
+//example
+1.  Crypto Kitty we can rent out our NFTs to other cat owners for sometime.
+2.  we can buy property on NFT market places and rent out for sometime.
+3.  In game Assets can be rent out for some time to get some coins or real money..
+
+########################################
+
+--. ERC - 874 - Weighted NFT.
+    i.      not all NFTs are created equal. weight allow external actors to recognize the value of the this NFT.
+    ii.     user can set weight of his NFT.
+    iii.    we can use weight functions to achieve this functionalities.
+//example
+https://github.com/ethereum/EIPs/pull/874
+
+#######################################
+
+--. ERC - 1155 - Multi-Token Standard (Hybrid Standard)
+    i.      can manage multi tokens in same contract.
+    ii.     must have pre-knowledge of ERC20 and ERC721.
+    iii.    improvement of both standards ERC20 and ERC721.
+    iv.     allow batch transfer functionalities.
+    v.      more popular then ERC721.
+    vi.     can use nested mapping to access NFT's and FT's of same account address
+
+ //example
+ if supply is > 1 then it is not an NFT 
+ only if supply == 1 then it is an NFT 
+.. game may contain gold silver swords and a unique chair (only one). only one user can get that chair. 
+
+##########################################
+
+--. ERC - 1363 - Payable Token
+    i.      Define interface for ERC20 token    
+    ii.     supports executing recipient code after "Transfer" or "TransferFrom",
+            or spender code after "Approve".
+//example
+like if you want to make payments after Transfer or TransferFrom function successfully executed... 
+
+######################################
+
+--. ERC - 4626 - Tokenized VAULTS Standards
+    i.      Standard tokenized wallet Interface
+    ii.     used for ERC20 VAULTS
+//example
+used in DeFi

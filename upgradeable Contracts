@@ -1,0 +1,27 @@
+using delegatecall method we upgrade the contract.
+
+e.g.
+
+    // SPDX-License-Identifier: MIT
+    pragma solidity 0.8.17
+    contract B 
+        uint public num
+        address public sender
+
+        function setVar(uint _num) public 
+            num = _num + 5
+            sender = msg.sender
+
+    contract A 
+        uint public num
+        address public sender
+
+        function setVar(address baseContract, uint _num) public {
+            
+            (bool success, bytes memory data) = baseContract.delegatecall
+                abi.encodeWithSignature("setVar(uint256)", _num
+            )
+
+
+
+    }
